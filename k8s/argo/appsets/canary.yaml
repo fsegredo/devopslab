@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-git
+spec:
+  generators:
+  # matrix 'parent' generator
+  - matrix:
+      generators:
+      # git generator, 'child' #1
+      - git:
+          repoURL: https://github.com/fsegredo/devopslab.git
+          revision: HEAD
+          directories:
+          - path: k8s/argo/rollouts/*
+      - clusters: {}
+        # cluster generator, 'child' #2
+  template:
+    metadata:
+      name: '{{path.basename}}-{{name}}'
+    spec:
+      project: 'default'
+      source:
+        repoURL: https://github.com/fsegredo/devopslab.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: '{{server}}'
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          selfHeal: true

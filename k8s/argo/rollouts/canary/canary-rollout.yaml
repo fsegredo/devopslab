@@ -32,7 +32,7 @@ spec:
       stableService: rollouts-demo-stable
       trafficRouting:
         nginx:
-          stableIngress: rollouts-demo-stable
+          stableIngress: rollouts-demo-ingress
       steps:
       - setWeight: 20
       - pause: {duration: 20s}

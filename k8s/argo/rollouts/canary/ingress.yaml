@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: rollouts-demo-ingress
   annotations:
+    argocd.argoproj.io/sync-wave: "2"
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/canary: "true"
     nginx.ingress.kubernetes.io/canary-by-header: "canary"

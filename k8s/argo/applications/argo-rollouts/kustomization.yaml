@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 - argo-rollouts.yaml
-- rollout-extension.yaml
+#- rollout-extension.yaml

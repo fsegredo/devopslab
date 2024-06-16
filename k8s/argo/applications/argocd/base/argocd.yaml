@@ -12,9 +12,18 @@ spec:
     chart: argo-cd
     repoURL: https://argoproj.github.io/argo-helm
     targetRevision: 7.1.3
-    path: overlays/extensions
+    #path: overlays/extensions
     helm:
       releaseName: argo
+      values: |
+        server:
+          extensions:
+            enabled: true
+            extensionList:
+              - name: rollout-extension
+                env:
+                  - name: EXTENSION_URL
+                    value: https://github.com/argoproj-labs/rollout-extension/releases/download/v0.3.4/extension.tar
   syncPolicy:
     automated:
       prune: false

@@ -12,8 +12,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  #- host: rollouts-demo.example.com
-  - http:
+  - host: labsegredo.com
+   http:
       paths:
       - path: /
         pathType: Prefix

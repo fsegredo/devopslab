@@ -34,14 +34,13 @@ spec:
             routes:
             - primary
       steps:
-      - setWeight: 20
-      - pause: {duration: 20s}
-      - setWeight: 40
-      - pause: {duration: 40s}
+      - setWeight: 10
+      - pause: {duration: 10s}
+      - setWeight: 30
+      - pause: {duration: 10s}
       - setWeight: 60
-      - pause: {duration: 20s}
-      - setWeight: 80
-      - pause: {duration: 20s}
+      - pause: {duration: 10s}
+      - setWeight: 100
 
 ---
 apiVersion: networking.istio.io/v1alpha3

@@ -26,7 +26,7 @@ spec:
   strategy:
     canary:
       canaryService: canary-svc
-      stableService: stable-sv
+      stableService: stable-svc
       trafficRouting:
         istio:
           virtualService:

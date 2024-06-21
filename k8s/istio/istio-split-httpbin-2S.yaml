@@ -1,0 +1,60 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: httpbin-gateway-external
+spec:
+  selector:
+    istio: aks-istio-ingressgateway-external
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+#apiVersion: networking.istio.io/v1alpha3
+#  http:
+---
+#  - match:
+#    - uri:
+#        prefix: /
+#    route:
+#    - destination:
+#        host: httpbin-v1
+#        port:
+#          number: 14001
+#      weight: 10
+#    - destination:
+#        host: httpbin-v2
+#        port:
+#          number: 14001
+#      weight: 90
+
+
+## with rewrite if needed
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-route
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - httpbin-gateway-external
+  http:
+  - match:
+    - uri:
+        prefix: /httpbin
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: httpbin-v1
+        port:
+          number: 14001
+      weight: 10
+    - destination:
+        host: httpbin-v2
+        port:
+          number: 14001
+      weight: 90

@@ -4,21 +4,21 @@ metadata:
   name: rollouts-demo-ingress
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-by-header: "canary"
-    nginx.ingress.kubernetes.io/canary-by-header-value: "always"
-    nginx.ingress.kubernetes.io/canary-weight: "50"
+    #nginx.ingress.kubernetes.io/rewrite-target: /
+#nginx.ingress.kubernetes.io/canary: "true"
+#nginx.ingress.kubernetes.io/canary-by-header: "canary"
+#nginx.ingress.kubernetes.io/canary-by-header-value: "always"
+#nginx.ingress.kubernetes.io/canary-weight: "50"
 spec:
   ingressClassName: nginx
   rules:
-  - host: labsegredo.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: rollouts-demo-stable
-            port:
-              number: 80
+  #- host: labsegredo.com
+  - http:
+    paths:
+    - path: /
+      pathType: Prefix
+      backend:
+        service:
+          name: rollouts-demo-stable
+          port:
+            number: 80

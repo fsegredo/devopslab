@@ -35,12 +35,8 @@ spec:
             - primary
       steps:
       - setWeight: 10
-      - pause: {duration: 10s}
-      - setWeight: 30
-      - pause: {duration: 10s}
-      - setWeight: 60
-      - pause: {duration: 10s}
-      - setWeight: 100
+      - pause: {}
+
 
 ---
 apiVersion: networking.istio.io/v1alpha3

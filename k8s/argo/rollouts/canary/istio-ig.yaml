@@ -89,7 +89,7 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: rollouts-demo
+    app: rollout-canary
     # This selector will be updated with the pod-template-hash of the canary ReplicaSet. e.g.:
 # rollouts-pod-template-hash: 7bf84f9696
 ---
@@ -104,6 +104,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: rollouts-demo
+    app: rollout-canary
     # This selector will be updated with the pod-template-hash of the stable ReplicaSet. e.g.:
 # rollouts-pod-template-hash: 123746c88d

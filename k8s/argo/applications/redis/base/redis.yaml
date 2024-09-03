@@ -16,7 +16,7 @@ spec:
       releaseName: redis
       parameters:
       - name: "auth.enabled"
-        value: false
+        value: "false"
   syncPolicy:
     automated:
       prune: false
